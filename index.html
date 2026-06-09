@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mini HTML Studio</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#111827;
+color:white;
+height:100vh;
+overflow:auto;
+}
+
+.header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:10px;
+background:#1f2937;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+font-size:18px;
+font-weight:bold;
+}
+
+.tools{
+display:flex;
+gap:6px;
+}
+
+.tools button{
+border:none;
+background:#374151;
+color:white;
+padding:8px 10px;
+border-radius:8px;
+font-size:14px;
+cursor:pointer;
+}
+
+.tools button:hover{
+background:#4b5563;
+}
+
+.editor{
+padding:10px;
+}
+
+textarea{
+width:100%;
+height:250px;
+background:#0f172a;
+color:#fff;
+border:none;
+outline:none;
+border-radius:12px;
+padding:12px;
+font-size:15px;
+resize:vertical;
+}
+
+.preview-title{
+padding:10px;
+font-size:18px;
+font-weight:bold;
+}
+
+iframe{
+width:100%;
+height:800px;
+border:none;
+background:white;
+border-radius:12px;
+margin-bottom:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+<div class="logo">💻 HTML Studio</div>
+
+<div class="tools">
+<button onclick="runCode()">▶</button>
+<button onclick="clearCode()">🗑</button>
+<button onclick="copyCode()">📋</button>
+</div>
+</div>
+
+<div class="editor">
+<textarea id="code">
+<h1>Hello World</h1>
+<p>Write HTML here...</p>
+</textarea>
+</div>
+
+<div class="preview-title">
+📱 Live Preview
+</div>
+
+<div style="padding:10px">
+<iframe id="preview"></iframe>
+</div>
+
+<script>
+
+const codeBox =
+document.getElementById("code");
+
+const preview =
+document.getElementById("preview");
+
+function runCode(){
+preview.srcdoc = codeBox.value;
+}
+
+function clearCode(){
+codeBox.value="";
+preview.srcdoc="";
+}
+
+function copyCode(){
+navigator.clipboard.writeText(
+codeBox.value
+);
+alert("Code Copied");
+}
+
+runCode();
+
+</script>
+
+</body>
+</html>
